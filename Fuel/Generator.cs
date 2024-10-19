@@ -4,8 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication;
+namespace Fuel;
 
+/// <summary>
+/// Сущность "генератор"
+/// </summary>
 public class Generator
 {
     /// <summary>

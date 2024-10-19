@@ -1,0 +1,14 @@
+D:\projects\forNorthis\Fuel\Fuel\Fuel\bin\Debug\net8.0\Fuel.exe
+D:\projects\forNorthis\Fuel\Fuel\Fuel\bin\Debug\net8.0\Fuel.deps.json
+D:\projects\forNorthis\Fuel\Fuel\Fuel\bin\Debug\net8.0\Fuel.runtimeconfig.json
+D:\projects\forNorthis\Fuel\Fuel\Fuel\bin\Debug\net8.0\Fuel.dll
+D:\projects\forNorthis\Fuel\Fuel\Fuel\bin\Debug\net8.0\Fuel.pdb
+D:\projects\forNorthis\Fuel\Fuel\Fuel\obj\Debug\net8.0\Fuel.GeneratedMSBuildEditorConfig.editorconfig
+D:\projects\forNorthis\Fuel\Fuel\Fuel\obj\Debug\net8.0\Fuel.AssemblyInfoInputs.cache
+D:\projects\forNorthis\Fuel\Fuel\Fuel\obj\Debug\net8.0\Fuel.AssemblyInfo.cs
+D:\projects\forNorthis\Fuel\Fuel\Fuel\obj\Debug\net8.0\Fuel.csproj.CoreCompileInputs.cache
+D:\projects\forNorthis\Fuel\Fuel\Fuel\obj\Debug\net8.0\Fuel.dll
+D:\projects\forNorthis\Fuel\Fuel\Fuel\obj\Debug\net8.0\refint\Fuel.dll
+D:\projects\forNorthis\Fuel\Fuel\Fuel\obj\Debug\net8.0\Fuel.pdb
+D:\projects\forNorthis\Fuel\Fuel\Fuel\obj\Debug\net8.0\Fuel.genruntimeconfig.cache
+D:\projects\forNorthis\Fuel\Fuel\Fuel\obj\Debug\net8.0\ref\Fuel.dll
