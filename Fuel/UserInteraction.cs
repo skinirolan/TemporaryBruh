@@ -16,7 +16,7 @@ public class UserInteraction
     private double _powerDemand;
     private int _demandDays;
     private int _numberOfGenerators;
-    private GeneratorSolver _generators;
+    private GeneratorManager _generators;
     private SolveResult _solveResult;
 
     /// <summary>
@@ -38,14 +38,14 @@ public class UserInteraction
 
             _numberOfGenerators = Convert.ToInt32(Console.ReadLine());
 
-            _generators = new GeneratorSolver(_numberOfGenerators);
+            _generators = new GeneratorManager(_numberOfGenerators);
 
             Console.WriteLine("Введите данные о генераторах в формате: [Имя_генератора], [Мощность в кВт], [Потребление в литрах]\nПример ввода: Generator_name1, 12, 2.8");
 
             for (int i = 0; i < _numberOfGenerators; i++)
             {
                 string rawGenerator = Console.ReadLine();
-                _generators.push(rawGenerator);
+                _generators.Push(rawGenerator);
             }
             Process();
         }

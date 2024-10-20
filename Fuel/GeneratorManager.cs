@@ -5,7 +5,7 @@ namespace Fuel;
 /// <summary>
 /// Контейнер для хранения генераторов и решения поставленной задачи
 /// </summary>
-public class GeneratorSolver
+public class GeneratorManager
 {
     /// <summary>
     /// Массив с генераторами
@@ -16,7 +16,7 @@ public class GeneratorSolver
     /// Конструктор
     /// </summary>
     /// <param name="size">Размер контейнера</param>
-    public GeneratorSolver(int size)
+    public GeneratorManager(int size)
     {
         _generators = new Generator[size];
     }

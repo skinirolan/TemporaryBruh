@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fuel")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ff7073001c2eb8b82cca499b718c9ff73e47bf2e")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fuel")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fuel")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
