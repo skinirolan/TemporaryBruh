@@ -16,7 +16,7 @@ public class UserInteraction
     private double _powerDemand;
     private int _demandDays;
     private int _numberOfGenerators;
-    private GeneratorContainer _generators;
+    private GeneratorSolver _generators;
     private SolveResult _solveResult;
 
     /// <summary>
@@ -38,7 +38,7 @@ public class UserInteraction
 
             _numberOfGenerators = Convert.ToInt32(Console.ReadLine());
 
-            _generators = new GeneratorContainer(_numberOfGenerators);
+            _generators = new GeneratorSolver(_numberOfGenerators);
 
             Console.WriteLine("Введите данные о генераторах в формате: [Имя_генератора], [Мощность в кВт], [Потребление в литрах]\nПример ввода: Generator_name1, 12, 2.8");
 
@@ -69,9 +69,10 @@ public class UserInteraction
     {
         if (_solveResult != null) 
         {
+            if (_solveResult.FuelDemand == -1) 
+                throw new Exception("Ошибка: с заданным вводом цель недостижима");
             return _solveResult;
         }
-        if (_solveResult.FuelDemand == -1) throw new Exception("Ошибка: с заданным вводом цель недостижима");
         throw new Exception("Произошла непредвиденная ошибка");
     }
 }
