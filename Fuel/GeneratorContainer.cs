@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 
 namespace Fuel;
 
 /// <summary>
 /// Контейнер для хранения генераторов и решения поставленной задачи
 /// </summary>
-public class GenContainer
+public class GeneratorContainer
 {
     /// <summary>
     /// Массив с генераторами
@@ -23,7 +16,7 @@ public class GenContainer
     /// Конструктор
     /// </summary>
     /// <param name="size">Размер контейнера</param>
-    public GenContainer(int size)
+    public GeneratorContainer(int size)
     {
         _generators = new Generator[size];
     }
@@ -51,25 +44,25 @@ public class GenContainer
     /// <returns>Генератор</returns>
     private Generator SerializeGenerator(string generator)
     {
-        var gen = generator.Split(",");
-        var genOut = new Generator
+        var generatorInfo = generator.Split(",");
+        var generatorOut = new Generator
         {
-            Name = gen[0],
-            Power = Convert.ToDouble(gen[1]),
-            FuelConsumption = Convert.ToDouble(gen[2], new CultureInfo("en-US")),
+            Name = generatorInfo[0],
+            Power = Convert.ToDouble(generatorInfo[1]),
+            FuelConsumption = Convert.ToDouble(generatorInfo[2], new CultureInfo("en-US")),
         };
 
-        return genOut;
+        return generatorOut;
     }
 
     /// <summary>
     /// С попощью метода двоичного перебора вычисляется наиболее эффективная комбинация включения генераторов
     /// </summary>
     /// <returns>Список имён генераторов на включение и количество топлива в литрах</returns>
-    public (List<string>,double) GetNamesOfGenerators(double powerDemand, int daysDemand)
+    public SolveResult GetNamesOfGenerators(double powerDemand, int daysDemand)
     {
-        List<string> gensResult = new List<string>();
-        byte[] gensOn = new byte[_generators.Length]; //какие гены включить
+        List<string> generatorsResult = new List<string>();
+        byte[] generatorsOn = new byte[_generators.Length]; 
 
         int maxIterations = (int)Math.Pow(2,_generators.Length);
         double minSum = double.MaxValue;
@@ -78,10 +71,9 @@ public class GenContainer
         {
             double sum = 0;
             double power = 0;
+            int j = 0;
 
             byte[] multiplier = ConvertNumberToBinArr(i);
-
-            int j = 0;
 
             foreach (var m in multiplier)
             {
@@ -93,16 +85,19 @@ public class GenContainer
             if (sum < minSum && powerDemand <= power)
             {
                 minSum = sum;
-                Array.Copy(multiplier, gensOn, gensOn.Length);
+                Array.Copy(multiplier, generatorsOn, generatorsOn.Length);
             }
         }
 
         for (int i = 0; i < _generators.Length; i++)
         {
-            if (gensOn[i] == 1) gensResult.Add(_generators[i].Name);
+            if (generatorsOn[i] == 1) generatorsResult.Add(_generators[i].Name);
         }
-        if (gensResult.Count == 0 || minSum == double.MaxValue) return (null, -1);
-        return (gensResult,minSum*daysDemand);
+        
+        if (generatorsResult.Count == 0 || minSum == double.MaxValue) 
+            return new SolveResult(null, -1);
+
+        return new SolveResult(generatorsResult, minSum * daysDemand);
     }
 
     /// <summary>
