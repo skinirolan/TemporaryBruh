@@ -41,7 +41,7 @@ public class UserInteraction
 
         BelowZeroCheck();
 
-        Console.WriteLine("Введите данные о генераторах в формате: [Имя_генератора], [Мощность в кВт], [Потребление в литрах]\nПример ввода: Generator_name1, 12, 2.8");
+        Console.WriteLine("Введите данные о генераторах в формате: [Имя_генератора], [Мощность в кВт], [Потребление в литрах/час]\nПример ввода: Generator_name1, 12, 2.8");
 
         for (int i = 0; i < _numberOfGenerators; i++)
         {

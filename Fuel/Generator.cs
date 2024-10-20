@@ -17,10 +17,10 @@ public class Generator
     /// <summary>
     /// Мощность,  вырабатываемая генераторм
     /// </summary>
-    public double Power {  get; set; }
+    public double Power { get; set; }
 
     /// <summary>
-    /// Потребление генератора топливом
+    /// Потребление топлива генератором
     /// </summary>
     public double FuelConsumption { get; set; }
 }

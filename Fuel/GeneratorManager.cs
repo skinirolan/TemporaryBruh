@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Security.AccessControl;
 
 namespace Fuel;
 
@@ -45,6 +46,7 @@ public class GeneratorManager
     private Generator SerializeGenerator(string generator)
     {
         var generatorInfo = generator.Split(",");
+        if (generatorInfo.Count() != 3) throw new Exception("Ошибка ввода");
         var generatorOut = new Generator
         {
             Name = generatorInfo[0],
@@ -97,7 +99,7 @@ public class GeneratorManager
         if (generatorsResult.Count == 0 || minSum == double.MaxValue) 
             return new SolveResult(null, -1);
 
-        return new SolveResult(generatorsResult, minSum * daysDemand);
+        return new SolveResult(generatorsResult, 24*minSum * daysDemand);
     }
 
     /// <summary>
