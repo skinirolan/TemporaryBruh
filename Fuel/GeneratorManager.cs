@@ -48,10 +48,10 @@ public class GeneratorManager
         var generatorOut = new Generator
         {
             Name = generatorInfo[0],
-            Power = Convert.ToDouble(generatorInfo[1]),
+            Power = Convert.ToDouble(generatorInfo[1], new CultureInfo("en-US")),
             FuelConsumption = Convert.ToDouble(generatorInfo[2], new CultureInfo("en-US")),
         };
-
+        if (generatorOut.FuelConsumption < 0 || generatorOut.Power < 0) throw new Exception("Ошибка ввода: параметры генераторов должны быть больше 0");
         return generatorOut;
     }
 

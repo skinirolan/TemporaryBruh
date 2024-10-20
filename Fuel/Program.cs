@@ -10,9 +10,14 @@ try
     foreach( var item in result.Names)
     {
         Console.Write($"{item}, ");
-        Console.WriteLine();
     }
+    Console.WriteLine();
 }
+catch (FormatException ex)
+{
+    Console.WriteLine("Ошибка ввода");
+    Console.WriteLine(ex.Message);
+} 
 catch (Exception ex)
 {
     Console.WriteLine(ex.Message);

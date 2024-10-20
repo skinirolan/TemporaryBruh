@@ -24,37 +24,36 @@ public class UserInteraction
     /// </summary>
     public void Input()
     {
-        try
+
+        Console.WriteLine("Введите необходимую для поселения мощность в кВт");
+
+        _powerDemand = Convert.ToDouble(Console.ReadLine(), new CultureInfo("en-US"));
+
+        Console.WriteLine("Введите целое количество дней для расчёта");
+
+        _demandDays = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Введите количество генераторов");
+
+        _numberOfGenerators = Convert.ToInt32(Console.ReadLine());
+
+        _generators = new GeneratorManager(_numberOfGenerators);
+
+        BelowZeroCheck();
+
+        Console.WriteLine("Введите данные о генераторах в формате: [Имя_генератора], [Мощность в кВт], [Потребление в литрах]\nПример ввода: Generator_name1, 12, 2.8");
+
+        for (int i = 0; i < _numberOfGenerators; i++)
         {
-            Console.WriteLine("Введите необходимую для поселения мощность в кВт");
-
-            _powerDemand = Convert.ToDouble(Console.ReadLine(), new CultureInfo("en-US"));
-
-            Console.WriteLine("Введите целое количество дней для расчёта");
-
-            _demandDays = Convert.ToInt32(Console.ReadLine());
-
-            Console.WriteLine("Введите количество генераторов");
-
-            _numberOfGenerators = Convert.ToInt32(Console.ReadLine());
-
-            _generators = new GeneratorManager(_numberOfGenerators);
-
-            Console.WriteLine("Введите данные о генераторах в формате: [Имя_генератора], [Мощность в кВт], [Потребление в литрах]\nПример ввода: Generator_name1, 12, 2.8");
-
-            for (int i = 0; i < _numberOfGenerators; i++)
-            {
-                string rawGenerator = Console.ReadLine();
-                _generators.Push(rawGenerator);
-            }
-            Process();
+            string rawGenerator = Console.ReadLine();
+            _generators.Push(rawGenerator);
         }
-        catch
-        {
-            Console.WriteLine("Ошибка ввода");
-        }
+        Process();
     }
 
+    /// <summary>
+    /// Получение списка имён генераторов
+    /// </summary>
     private void Process() 
     {
         _solveResult = _generators.GetNamesOfGenerators(_powerDemand, _demandDays);
@@ -70,9 +69,17 @@ public class UserInteraction
         if (_solveResult != null) 
         {
             if (_solveResult.FuelDemand == -1) 
-                throw new Exception("Ошибка: с заданным вводом цель недостижима");
+                throw new Exception("Ошибка: с заданным вводом невозможно обеспечить поселение энергией");
             return _solveResult;
         }
         throw new Exception("Произошла непредвиденная ошибка");
+    }
+
+    /// <summary>
+    /// Проверка значений на корректность
+    /// </summary>
+    private void BelowZeroCheck()
+    {
+        if (_powerDemand <= 0 || _demandDays <= 0 || _numberOfGenerators <= 0) throw new Exception("Ошибка ввода: все значения должны быть больше 0");
     }
 }
